@@ -7,15 +7,37 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CleanArchitectureTemplate.A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CleanArchitectureTemplate.Domain", "CleanArchitectureTemplate.Domain", "{8CCF1A3F-F3AA-466E-A8EE-4988FE8F6532}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CleanArchitectureTemplate.Infrastructure.IoC", "CleanArchitectureTemplate.Infrastructure.IoC", "{636D0CFD-A661-446E-A53F-ABDA2138A8B4}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CleanArchitectureTemplate.Infrastructure.Data", "CleanArchitectureTemplate.Infrastructure.Data", "{2553F261-B215-4F99-AA50-BC61254E687D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CleanArchitectureTemplate.Infrastructure", "CleanArchitectureTemplate.Infrastructure", "{2553F261-B215-4F99-AA50-BC61254E687D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CleanArchitectureTemplate.Api", "CleanArchitectureTemplate.Api", "{707965D2-38C0-4C23-9653-CB769D282FDD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitectureTemplate.WebAPI", "CleanArchitectureTemplate.WebAPI\CleanArchitectureTemplate.WebAPI.csproj", "{AD7097FB-356D-4512-9995-E015312223BB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{A2B95D2F-E039-47F0-BB1E-5AD06BD7C865}"
+	ProjectSection(SolutionItems) = preProject
+		ApplicationDbContext.cs = ApplicationDbContext.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependency", "Dependency", "{62C83A3D-F0BB-4CD9-8481-9896E1DDE2B5}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD7097FB-356D-4512-9995-E015312223BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD7097FB-356D-4512-9995-E015312223BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD7097FB-356D-4512-9995-E015312223BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD7097FB-356D-4512-9995-E015312223BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AD7097FB-356D-4512-9995-E015312223BB} = {707965D2-38C0-4C23-9653-CB769D282FDD}
+		{A2B95D2F-E039-47F0-BB1E-5AD06BD7C865} = {2553F261-B215-4F99-AA50-BC61254E687D}
+		{62C83A3D-F0BB-4CD9-8481-9896E1DDE2B5} = {2553F261-B215-4F99-AA50-BC61254E687D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AC409458-7EE5-4CE3-9795-6B026C8A59BB}
