@@ -1,4 +1,4 @@
-﻿using CleanArchitectureTemplate.WebAPI.Models;
+﻿using CleanArchitecture.API.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -7,7 +7,7 @@ using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 
-namespace CleanArchitectureTemplate.WebAPI.Controllers
+namespace CleanArchitecture.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

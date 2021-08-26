@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace CleanArchitectureTemplate.WebAPI.Migrations
+namespace CleanArchitecture.WebAPI.Migrations
 {
     public partial class InitialMigration : Migration
     {

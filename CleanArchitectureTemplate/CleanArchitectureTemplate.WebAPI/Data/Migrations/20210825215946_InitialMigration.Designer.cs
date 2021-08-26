@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace CleanArchitectureTemplate.WebAPI.Migrations
+namespace CleanArchitecture.WebAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20210825215946_InitialMigration")]

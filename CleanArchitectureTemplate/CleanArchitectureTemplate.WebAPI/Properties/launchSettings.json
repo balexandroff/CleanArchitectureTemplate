@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "CleanArchitectureTemplate.WebAPI": {
+    "CleanArchitecture.API": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",

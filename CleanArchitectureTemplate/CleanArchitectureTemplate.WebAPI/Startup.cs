@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using System.IO;
 using System.Text;
 
-namespace CleanArchitectureTemplate.WebAPI
+namespace CleanArchitecture.API
 {
     public class Startup
     {
@@ -58,7 +58,7 @@ namespace CleanArchitectureTemplate.WebAPI
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "CleanArchitectureTemplate", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "CleanArchitecture", Version = "v1" });
             });
         }
 
@@ -71,7 +71,7 @@ namespace CleanArchitectureTemplate.WebAPI
             }
 
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CleanArchitectureTemplate v1"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CleanArchitecture v1"));
 
             app.UseHttpsRedirection();
 

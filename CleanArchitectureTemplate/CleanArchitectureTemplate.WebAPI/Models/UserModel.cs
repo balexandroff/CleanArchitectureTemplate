@@ -1,4 +1,4 @@
-﻿namespace CleanArchitectureTemplate.WebAPI.Models
+﻿namespace CleanArchitecture.API.Models
 {
     public class UserModel
     {
