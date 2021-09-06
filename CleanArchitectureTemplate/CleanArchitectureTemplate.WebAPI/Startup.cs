@@ -34,7 +34,7 @@ namespace CleanArchitecture.API
 
             services.RegisterDbContext(Configuration);
 
-            services.AddAutoMapper(typeof(Startup));
+            services.RegisterAutoMapper();
 
             services.RegisterSwagger();
         }

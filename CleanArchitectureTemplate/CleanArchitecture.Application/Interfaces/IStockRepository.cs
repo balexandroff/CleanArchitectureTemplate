@@ -1,8 +1,7 @@
-﻿using CleanArchitecture.Application.Interfaces;
-using CleanArchitecture.Application.ViewModels;
+﻿using CleanArchitecture.Application.ViewModels;
 using System.Collections.Generic;
 
-namespace CleanArchitecture.Aplication.Interfaces
+namespace CleanArchitecture.Application.Interfaces
 {
     public interface IStockService: IService
     {

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CleanArchitecture.Aplication.Interfaces;
+using CleanArchitecture.Application.Interfaces;
 using CleanArchitecture.Application.ViewModels;
 using CleanArchitecture.Domain.Interfaces;
 using System.Collections.Generic;

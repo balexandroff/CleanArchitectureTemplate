@@ -10,6 +10,7 @@ using Microsoft.OpenApi.Models;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using AutoMapper;
 
 namespace CleanArchitecture.Infrastructure.Data.Dependency
 {
@@ -103,6 +104,13 @@ namespace CleanArchitecture.Infrastructure.Data.Dependency
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CleanArchitecture", Version = "v1" });
             });
+
+            return services;
+        }
+
+        public static IServiceCollection RegisterAutoMapper(this IServiceCollection services)
+        {
+            services.AddAutoMapper(typeof(Application.ViewModels.MapperProfiles.CountryProfile));
 
             return services;
         }

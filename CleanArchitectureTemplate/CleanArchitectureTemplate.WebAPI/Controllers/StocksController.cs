@@ -1,4 +1,4 @@
-﻿using CleanArchitecture.Aplication.Interfaces;
+﻿using CleanArchitecture.Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

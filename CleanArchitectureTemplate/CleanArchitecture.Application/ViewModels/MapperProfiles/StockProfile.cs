@@ -7,7 +7,10 @@ namespace CleanArchitecture.Application.ViewModels.MapperProfiles
     {
         public StockProfile()
         {
-            CreateMap<Stock, StockViewModel>();
+            CreateMap<Stock, StockViewModel>()
+                .ForMember(dest =>
+                dest.Country,
+                opt => opt.MapFrom(src => src.Country.Name));
         }
     }
 }
