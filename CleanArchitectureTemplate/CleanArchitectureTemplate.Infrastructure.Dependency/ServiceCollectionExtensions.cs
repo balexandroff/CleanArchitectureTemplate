@@ -21,7 +21,7 @@ namespace CleanArchitecture.Infrastructure.Data.Dependency
                           .GetTypes()
                           .Where(x => !string.IsNullOrEmpty(x.Namespace))
                           .Where(x => x.IsClass)
-                          .Where(x => x.IsAssignableFrom(typeof(IRepository)))
+                          .Where(x => typeof(IRepository).IsAssignableFrom(x))
                           .Select(x => new
                           {
                               Interface = x.GetInterface($"I{x.Name}"),
@@ -43,7 +43,7 @@ namespace CleanArchitecture.Infrastructure.Data.Dependency
                           .GetTypes()
                           .Where(x => !string.IsNullOrEmpty(x.Namespace))
                           .Where(x => x.IsClass)
-                          .Where(x => x.IsAssignableFrom(typeof(IService)))
+                          .Where(x => typeof(IService).IsAssignableFrom(x))
                           .Select(x => new
                           {
                               Interface = x.GetInterface($"I{x.Name}"),

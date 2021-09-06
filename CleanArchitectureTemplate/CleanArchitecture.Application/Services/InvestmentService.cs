@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
+using CleanArchitecture.Application.Interfaces;
 using CleanArchitecture.Application.ViewModels;
 using CleanArchitecture.Domain.Interfaces;
 using System.Collections.Generic;
 
 namespace CleanArchitecture.Application.Services
 {
-    public class InvestmentService
+    public class InvestmentService: IInvestmentService
     {
         private readonly IMapper _mapper;
 

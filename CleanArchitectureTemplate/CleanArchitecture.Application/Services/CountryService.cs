@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
+using CleanArchitecture.Application.Interfaces;
 using CleanArchitecture.Application.ViewModels;
 using CleanArchitecture.Domain.Interfaces;
 using System.Collections.Generic;
 
 namespace CleanArchitecture.Application.Services
 {
-    public class CountryService
+    public class CountryService: ICountryService
     {
         private readonly IMapper _mapper;
 

@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
+using CleanArchitecture.Aplication.Interfaces;
 using CleanArchitecture.Application.ViewModels;
 using CleanArchitecture.Domain.Interfaces;
 using System.Collections.Generic;
 
 namespace CleanArchitecture.Aplication.Services
 {
-    public class StockService
+    public class StockService: IStockService
     {
         private readonly IMapper _mapper;
 
