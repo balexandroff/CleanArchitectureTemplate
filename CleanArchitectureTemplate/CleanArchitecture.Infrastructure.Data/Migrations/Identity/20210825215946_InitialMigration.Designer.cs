@@ -6,9 +6,9 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace CleanArchitecture.WebAPI.Migrations
+namespace CleanArchitecture.Infrastructure.Data.Migrations.Identity
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(StocksIdentityDbContext))]
     [Migration("20210825215946_InitialMigration")]
     partial class InitialMigration
     {

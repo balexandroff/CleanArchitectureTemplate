@@ -1,18 +1,14 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-public class ApplicationDbContext : IdentityDbContext
+public class StocksIdentityDbContext : IdentityDbContext
 {
-    private readonly IMediator _mediator;
-
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IMediator mediator)
+    public StocksIdentityDbContext(DbContextOptions<StocksIdentityDbContext> options)
             : base(options)
     {
-        _mediator = mediator;
     }
 
     //public DbSet<AspNetUsers> AspNetUsers { get; set; }
@@ -28,7 +24,7 @@ public class ApplicationDbContext : IdentityDbContext
         int result = await base.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
 
         // ignore events if no dispatcher provided
-        if (_mediator == null) return result;
+        //if (_mediator == null) return result;
 
         // dispatch events only if save was successful
         //var entitiesWithEvents = ChangeTracker.Entries<BaseEntity>()

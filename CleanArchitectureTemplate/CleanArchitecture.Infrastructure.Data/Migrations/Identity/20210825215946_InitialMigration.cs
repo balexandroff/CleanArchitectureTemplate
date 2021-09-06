@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace CleanArchitecture.WebAPI.Migrations
+namespace CleanArchitecture.Infrastructure.Data.Migrations.Identity
 {
     public partial class InitialMigration : Migration
     {

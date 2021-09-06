@@ -1,4 +1,5 @@
-﻿using CleanArchitecture.API.Models;
+﻿using AutoMapper;
+using CleanArchitecture.API.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -13,10 +14,12 @@ namespace CleanArchitecture.API.Controllers
     [ApiController]
     public class IdentityController : Controller
     {
+        private readonly IMapper _mapper;
         private IConfiguration _configuration;
 
-        public IdentityController(IConfiguration configuration)
+        public IdentityController(IMapper mapper, IConfiguration configuration)
         {
+            _mapper = mapper;
             _configuration = configuration;
         }
         [AllowAnonymous]
