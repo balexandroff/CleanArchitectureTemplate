@@ -1,4 +1,5 @@
 ﻿using CleanArchitecture.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 
@@ -99,6 +100,27 @@ namespace CleanArchitecture.Infrastructure.Data
                     StockId = Guid.Parse("17141C4B-DF47-4130-9810-45D6CCE7D360"),
                     CreatedDate = new DateTime(2021, 01, 01),
                     ModifiedDate = new DateTime(2021, 01, 01),
+                }
+            );
+        }
+
+        public static void IdentitySeed(this ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<IdentityUser>().HasData(
+                new IdentityUser
+                {
+                    Id = "F0E12839-4C29-4622-98C9-82585C756DBC",
+                    UserName = "system@cleanarchitecture.com",
+                    NormalizedUserName = "SYSTEM@CLEANARCHITECTURE.COM",
+                    Email = "system@cleanarchitecture.com",
+                    NormalizedEmail = "SYSTEM@CLEANARCHITECTURE.COM",
+                    EmailConfirmed = true,
+                    PasswordHash = "AEHAOa8JTgCClddiRV02HyKRtiYS38H2+Mk0lnXXlsDmw4DsuIRwxHCxe5DSStIPew==", //Cl3@nArch
+                    PhoneNumber = "1234567890",
+                    PhoneNumberConfirmed = true,
+                    TwoFactorEnabled = false,
+                    LockoutEnabled = true,
+                    AccessFailedCount = 0
                 }
             );
         }

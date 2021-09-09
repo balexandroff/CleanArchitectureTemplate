@@ -1,5 +1,6 @@
 ﻿using CleanArchitecture.Domain.Entities;
 using CleanArchitecture.Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,7 +12,7 @@ namespace CleanArchitecture.Infrastructure.Data.Repositories
 
         public IEnumerable<Stock> GetAll()
         {
-            return _context.Stocks.ToList();
+            return _context.Stocks.Include(s => s.Country).ToList();
         }
     }
 }

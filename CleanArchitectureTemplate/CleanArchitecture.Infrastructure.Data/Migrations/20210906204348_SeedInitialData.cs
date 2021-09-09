@@ -8,6 +8,17 @@ namespace CleanArchitecture.Infrastructure.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "CreatedDate", "ModifiedDate", "Name" },
+                values: new object[,]
+                {
+                                { new Guid("5cd26786-63bc-404e-bbdb-c7c72496499a"), new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "United States" },
+                                { new Guid("2c4cd64b-1a82-4f47-a282-f4ff3b2223b4"), new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Germany" },
+                                { new Guid("457c8adb-ba18-4ac9-b3ac-9d5b534b849c"), new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Netherlands" },
+                                { new Guid("6fa36d7d-82e8-4ab3-9027-751f9d6cfe5b"), new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "United Kingdom" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Countries",
                 columns: new[] { "Id", "CreatedDate", "ModifiedDate", "Name" },
                 values: new object[,]

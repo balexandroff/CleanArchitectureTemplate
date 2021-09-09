@@ -2,6 +2,7 @@
 using CleanArchitecture.Domain.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,7 +11,6 @@ using Microsoft.OpenApi.Models;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using AutoMapper;
 
 namespace CleanArchitecture.Infrastructure.Data.Dependency
 {
@@ -66,6 +66,10 @@ namespace CleanArchitecture.Infrastructure.Data.Dependency
                 options.UseSqlServer(
                     configuration.GetConnectionString("StocksIdentityConnection")));
 
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<StocksIdentityDbContext>()
+                .AddDefaultTokenProviders();
+
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -110,7 +114,9 @@ namespace CleanArchitecture.Infrastructure.Data.Dependency
 
         public static IServiceCollection RegisterAutoMapper(this IServiceCollection services)
         {
-            services.AddAutoMapper(typeof(Application.ViewModels.MapperProfiles.CountryProfile));
+            services.AddAutoMapper(typeof(Application.ViewModels.MapperProfiles.StockProfile),
+                typeof(Application.ViewModels.MapperProfiles.CountryProfile),
+                typeof(Application.ViewModels.MapperProfiles.InvestmentProfile));
 
             return services;
         }

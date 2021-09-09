@@ -1,12 +1,15 @@
 ﻿using AutoMapper;
 using CleanArchitecture.API.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace CleanArchitecture.API.Controllers
 {
@@ -16,18 +19,23 @@ namespace CleanArchitecture.API.Controllers
     {
         private readonly IMapper _mapper;
         private IConfiguration _configuration;
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public IdentityController(IMapper mapper, IConfiguration configuration)
+        public IdentityController(IMapper mapper, IConfiguration configuration, 
+            SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager)
         {
             _mapper = mapper;
             _configuration = configuration;
+            _signInManager = signInManager;
+            _userManager = userManager;
         }
         [AllowAnonymous]
         [HttpPost]
-        public IActionResult Login([FromBody] UserModel login)
+        public async Task<IActionResult> Login([FromBody] UserModel login)
         {
             IActionResult response = Unauthorized();
-            var user = AuthenticateUser(login);
+            var user = await AuthenticateUserAsync(login);
 
             if (user != null)
             {
@@ -44,30 +52,33 @@ namespace CleanArchitecture.API.Controllers
             return response;
         }
 
-        private JwtSecurityToken GenerateJSONWebToken(UserModel userInfo)
+        private JwtSecurityToken GenerateJSONWebToken(IdentityUser userInfo)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
+            var claims = new[] {
+                new Claim(JwtRegisteredClaimNames.Sub, userInfo.UserName),
+                new Claim(JwtRegisteredClaimNames.Email, userInfo.Email),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+            };
+
             return new JwtSecurityToken(_configuration["Jwt:Issuer"],
               _configuration["Jwt:Issuer"],
-              null,
+              claims,
               expires: DateTime.Now.AddMinutes(30),
               signingCredentials: credentials);
         }
 
-        private UserModel AuthenticateUser(UserModel login)
+        private async Task<IdentityUser> AuthenticateUserAsync(UserModel login)
         {
-            UserModel user = null;
-
-            //Validate the User Credentials    
-            //Demo Purpose, I have Passed HardCoded User Information    
-            if (login.Username == "BAlexandrov")
+            var signInResult = await _signInManager.PasswordSignInAsync(login.Username, login.Password, false, true);
+            if (signInResult.Succeeded)
             {
-                user = new UserModel { Username = "BAlexandrov", Email = "borko.alexandrov@gmail.com" };
+                return await _userManager.FindByEmailAsync(login.Username);
             }
 
-            return user;
+            return null;
         }
     }
 }
