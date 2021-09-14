@@ -11,6 +11,7 @@ using Microsoft.OpenApi.Models;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using MediatR;
 
 namespace CleanArchitecture.Infrastructure.Data.Dependency
 {
@@ -56,6 +57,8 @@ namespace CleanArchitecture.Infrastructure.Data.Dependency
             {
                 services.AddScoped(serviceType.Interface, serviceType.Implementation);
             }
+
+            services.AddMediatR(typeof(CleanArchitecture.Application.Common.ServiceResult).Assembly);
 
             return services;
         }

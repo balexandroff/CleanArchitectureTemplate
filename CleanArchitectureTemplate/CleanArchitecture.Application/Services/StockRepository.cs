@@ -3,6 +3,8 @@ using CleanArchitecture.Application.Interfaces;
 using CleanArchitecture.Application.ViewModels;
 using CleanArchitecture.Domain.Interfaces;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace CleanArchitecture.Aplication.Services
 {
@@ -18,9 +20,9 @@ namespace CleanArchitecture.Aplication.Services
             this._mapper = mapper;
         }
 
-        public IEnumerable<StockViewModel> GetAll()
+        public async Task<IEnumerable<StockViewModel>> GetAllAsync(CancellationToken cancellationToken)
         {
-            var allStocks = this._stockRepository.GetAll();
+            var allStocks = await this._stockRepository.GetAllAsync(cancellationToken);
 
             return this._mapper.Map<IEnumerable<StockViewModel>>(allStocks);
         }
