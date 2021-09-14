@@ -3,6 +3,8 @@ using CleanArchitecture.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace CleanArchitecture.Infrastructure.Data.Repositories
 {
@@ -10,9 +12,9 @@ namespace CleanArchitecture.Infrastructure.Data.Repositories
     {
         public StockRepository(StocksDbContext context) : base(context) { }
 
-        public IEnumerable<Stock> GetAll()
+        public async Task<IEnumerable<Stock>> GetAllAsync(CancellationToken cancellationToken)
         {
-            return _context.Stocks.Include(s => s.Country).ToList();
+            return await _context.Stocks.Include(s => s.Country).ToListAsync(cancellationToken);
         }
     }
 }
